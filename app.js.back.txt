@@ -1,0 +1,16 @@
+ /*
+Ext.application({
+    extend: 'study.Application',
+
+    name: 'study',
+
+    requires: [
+        // This will automatically load all classes in the study namespace
+        // so that application classes do not need to require each other.
+        'study.*'
+    ],
+
+    // The name of the initial view to create.
+    mainView: 'study.view.main.Main'
+});
+*/
