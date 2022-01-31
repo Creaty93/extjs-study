@@ -3,23 +3,41 @@ Ext.onReady(function(){
 	Ext.create('Ext.panel.Panel',{
 		width:500,
 		height:500,
-		title:'tree panel',
+		title:'grid panel',
 		renderTo:Ext.getBody(),
+		layout:'fit',
 		items:[{
-			xtype:'treepanel',
-			store:{
-				root:{
-					text:'Servers',
-					expanded:true
-				},
-				proxy:{
-					type:'ajax',
-					url:'/data/tree.json',
-					reader:{
-						type:'json'
-					}
-				}
-			}	
+			xtype:'grid',
+			columns:[{
+				text:'a',
+				flex:1
+			},{
+				text:'b',
+				flex:1
+			},{
+				text:'c',
+				flex:1
+			}],
+			tbar:[{
+				xtype:'button',
+				text:'tbtn'
+			}],
+			bbar:[{
+				xtype:'button',
+				text:'bbtn'
+			}],
+			lbar:[{
+				xtype:'button',
+				text:'lbtn'
+			}],
+			rbar:[{
+				xtype:'button',
+				text:'rbtn'
+			}],
+			fbar:[{
+				xtype:'button',
+				text:'fbtn'
+			}]
 		}]
 	})
 })
