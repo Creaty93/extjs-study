@@ -7,23 +7,19 @@ Ext.onReady(function(){
 		renderTo:Ext.getBody(),
 		items:[{
 			xtype:'treepanel',
-			root:{
-				text:'Servers',
-				expanded:false,
-				children:[{
-					text:'.settings',
-					expanded:true,
-					children:[{
-						text:'file1',
-						leaf:true
-					}]
-				},{
-					text:'.tomcat'
-				},{
-					text:'.project',
-					leaf:true
-				}]
-			}
+			store:{
+				root:{
+					text:'Servers',
+					expanded:true
+				},
+				proxy:{
+					type:'ajax',
+					url:'/data/tree.json',
+					reader:{
+						type:'json'
+					}
+				}
+			}	
 		}]
 	})
 })
