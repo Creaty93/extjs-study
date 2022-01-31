@@ -1,29 +1,37 @@
 
 Ext.onReady(function(){
-	Ext.create('Ext.panel.Panel',{
+	Ext.create('Ext.grid.Panel',{
 		width:500,
 		height:500,
 		title:'data store',
 		renderTo:Ext.getBody(),
-		items:[{
-			xtype:'combo',
-			editable:false,
-			value:'second',
-			displayField: 'test1',
-			valueField:'test2',
-			store:{
-				fields:['test1', 'test2'],
-				data:[{
-					test1 : '처음',
-					test2 : 'first'
-				},{
-					test1 : '둘째',
-					test2 : 'second'
-				},{
-					test1 : '셋째',
-					test2 : 'third'
-				}]
-			}
-		}]
+		columns:[{
+			text :'c1',
+			flex:1,
+			align:'center',
+			dataIndex:'c1'
+		},{
+			text:'c2',
+			flex:1,
+			align:'left',
+			dataIndex:'c2'
+		},{
+			text:'c3',
+			flex:1,
+			align:'right',
+			dataIndex:'c3'
+		}],
+		store:{
+			fields:['c1','c2','c3'],
+			data:[{
+				c1:'row1c1',
+				c2:'row1c2',
+				c3:'row1c3'
+			},{
+				c1:'row2c1',
+				c2:'row2c2',
+				c3:'row2c3'
+			}]
+		}
 	})
 })
