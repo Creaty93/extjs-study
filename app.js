@@ -1,37 +1,49 @@
 
 Ext.onReady(function(){
-	Ext.create('Ext.grid.Panel',{
+	Ext.create('Ext.panel.Panel',{
 		width:500,
 		height:500,
 		title:'data store',
 		renderTo:Ext.getBody(),
-		columns:[{
-			text :'c1',
-			flex:1,
-			align:'center',
-			dataIndex:'c1'
+		items:[{
+			xtype:'combo',
+			displayField:'key',
+			valueField:'value',
+			store:{
+				fields: ['key', 'value'],
+				proxy:{
+					type:'ajax',
+					url:'/data/combo.json',
+					reader:{
+						type:'json',
+						rootProperty:'data'
+					}
+				}
+			}
 		},{
-			text:'c2',
-			flex:1,
-			align:'left',
-			dataIndex:'c2'
-		},{
-			text:'c3',
-			flex:1,
-			align:'right',
-			dataIndex:'c3'
-		}],
-		store:{
-			fields:['c1','c2','c3'],
-			data:[{
-				c1:'row1c1',
-				c2:'row1c2',
-				c3:'row1c3'
+			xtype:'grid',
+			columns:[{
+				text:'컬럼1',
+				dataIndex:'column1'
 			},{
-				c1:'row2c1',
-				c2:'row2c2',
-				c3:'row2c3'
-			}]
-		}
+				text:'컬럼2',
+				dataIndex:'column2'
+			},{
+				text:'컬럼3',
+				dataIndex:'column3'
+			}],
+			store:{
+				autoLoad:true,
+				fields: ['column1', 'column2', 'column3'],
+				proxy:{
+					type:'ajax',
+					url:'/data/grid.json',
+					reader:{
+						type:'json',
+						rootProperty:'data'
+					}
+				}
+			}
+		}]
 	})
 })
