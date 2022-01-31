@@ -1,42 +1,25 @@
 
 Ext.onReady(function(){
-	Ext.create("Ext.container.Viewport",{
-		renderTo  : Ext.getBody(),
-		layout : 'border',
-		items : [{
-			xtype : 'panel',
-			height : 100,
-			header : false,
-			region : 'north',
-			items:[{
-				xtype:'toolbar',
-				items:[{
-					xtype:'button',
-					text:'File',
-					menu:[{
-						text:'New',
-						listeners:{
-							click:function(btn){
-								alert('New');
-							}
-						}
-					},{
-						text:'Open File'
-					},{
-						text:'Close'
-					}]
-				}]
-			}]
-		},{
-			xtype : 'panel',
-			width : 150,
-			split : true,
-			title : 'test',
-			region : 'west'
-		},{
-			xtype : 'panel',
-			region : 'center',
-			title : 'main'
+	Ext.create('Ext.container.Viewport',{
+		rederTo:Ext.getBody(),
+		items:[{
+			xtype:'button',
+			text:'show modal',
+			handler:function(btn){
+				var win = Ext.create('Ext.window.Window',{
+		width:300,
+		height:300,
+		title:'Window Title',
+		autoShow:true,
+		modal:true,
+		items:[{
+			xtype:'button',
+			text:'window btn'
+		}]
+	});
+	
+	win.show();
+			}
 		}]
 	})
 })
