@@ -1,34 +1,42 @@
 
 Ext.onReady(function(){
-	Ext.create("Ext.panel.Panel",{
-		width : 500,
-		height : 500,
-		title : 'ExtJS Example',
+	Ext.create("Ext.container.Viewport",{
 		renderTo  : Ext.getBody(),
-		border : true,
 		layout : 'border',
-		items :[{
+		items : [{
 			xtype : 'panel',
-			border : true,
-			flex : 1,
-			region : 'west'		
+			height : 100,
+			header : false,
+			region : 'north',
+			items:[{
+				xtype:'toolbar',
+				items:[{
+					xtype:'button',
+					text:'File',
+					menu:[{
+						text:'New',
+						listeners:{
+							click:function(btn){
+								alert('New');
+							}
+						}
+					},{
+						text:'Open File'
+					},{
+						text:'Close'
+					}]
+				}]
+			}]
 		},{
 			xtype : 'panel',
-			border : true,
-			flex : 2,
+			width : 150,
+			split : true,
+			title : 'test',
+			region : 'west'
+		},{
+			xtype : 'panel',
 			region : 'center',
-			layout : 'border',
-			items : [{
-				xtype : 'panel',
-				border : true,
-				flex : 2,
-				region : 'center'		
-			},{
-				xtype : 'panel',
-				border : true,
-				flex  : 1,
-				region : 'south'
-			}]
+			title : 'main'
 		}]
 	})
 })
