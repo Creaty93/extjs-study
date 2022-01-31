@@ -3,42 +3,27 @@ Ext.onReady(function(){
 	Ext.create('Ext.panel.Panel',{
 		width:500,
 		height:500,
-		title:'form field',
+		title:'data store',
 		renderTo:Ext.getBody(),
 		items:[{
-			xtype:'textfield',
-			allowBlank:false,
-			emptyText:'input text'
-		},{
-			xtype:'textfield',
-			inputType:'password',
-			allowBlank:false,
-			emptyText:'input password'
-		},{
-			xtype:'datefield',
-			format:'y-m-d'
-		},{
-			xtype:'numberfield',
-			minValue: -1,
-			maxValue:10
-		},{
-			xtype:'filefield',
-			buttonOnly:true
-		},{
-			xtype:'checkboxfield',
-			boxLabel:'아이디 기억'
-		},{
-			xtype:'radiofield',
-			name:'sex',
-			boxLabel:'남'
-		},{
-			xtype:'radiofield',
-			name:'sex',
-			boxLabel:'여'
-		},{
-			xtype:'slider',
-			width:100,
-			value:50
+			xtype:'combo',
+			editable:false,
+			value:'second',
+			displayField: 'test1',
+			valueField:'test2',
+			store:{
+				fields:['test1', 'test2'],
+				data:[{
+					test1 : '처음',
+					test2 : 'first'
+				},{
+					test1 : '둘째',
+					test2 : 'second'
+				},{
+					test1 : '셋째',
+					test2 : 'third'
+				}]
+			}
 		}]
 	})
 })
