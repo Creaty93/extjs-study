@@ -29,50 +29,30 @@ Ext.onReady(function(){
 				dataIndex:'column3',
 				flex:1
 			}],
+			listeners:{
+				boxready:function(obj){
+					Ext.Ajax.request({
+						url: '/data/grid.json',
+						method:'POST',
+						params:{
+							
+						},
+						success:function(response){
+							var result = Ext.decode(response.responseText);
+							var store = obj.getStore();
+							console.log('success',result);
+							store.loadData(result.data);
+						},
+						failure:function(response){
+							console.log('fail', response.status);
+						}
+					});
+				}
+			},
 			store:{
 				field:['column1','column2','column3'],
-				proxy:{
-					type:'ajax',
-					url:'/data/grid.json',
-					reader:{
-						type:'json',
-						rootProperty:'data'
-					}
-				},
-				autoLoad:true
-			},			
-			tbar:[{
-				xtype:'button',
-				text:'추가',
-				listeners:{
-					click:function(btn){
-						alert('btn click');
-					}
-				}
-			},{
-				xtype:'combo',
-				queryMode:'local',
-				displayField:'key',
-				valueField:'value',
-				store:{
-					field:['key','value'],
-					data:[{
-						key:'선택1',
-						value:'값1'
-					},{
-						key:'선택2',
-						value:'값2'
-					},{
-						key:'선택3',
-						value:'값3'
-					}]
-				},
-				listeners:{
-					change:function(obj, newValue, oldValue, eOpts){
-						alert(newValue+','+ oldValue);
-					}
-				}
-			}]
+				data : []
+			}
 		}]
 	})
 })
