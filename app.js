@@ -1,58 +1,90 @@
-
 Ext.onReady(function(){
-	Ext.create('Ext.panel.Panel',{
-		width:500,
-		height:500,
-		title:'grid panel',
+	Ext.create('Ext.container.Viewport',{
 		renderTo:Ext.getBody(),
-		layout:'fit',
+		layout:'border',
+		border:true,
 		items:[{
-			xtype:'grid',
-			listeners:{
-				cellclick:function(grid, td, cellIndex, record, tr, rowIndex, e, eOpts){
-					console.log(record.get('column3'));
-				}
-			},
-			columns:[{
-				text:'a',
-				dataIndex:'column1',
-				flex:1
-			},{
-				text:'b',
-				dataIndex:'column2',
-				flex:1,
-				renderer:function(value){
-					return value + 'hi';
-				}
-			},{
-				text:'c',
-				dataIndex:'column3',
-				flex:1
-			}],
-			listeners:{
-				boxready:function(obj){
-					Ext.Ajax.request({
-						url: '/data/grid.json',
-						method:'POST',
-						params:{
-							
-						},
-						success:function(response){
-							var result = Ext.decode(response.responseText);
-							var store = obj.getStore();
-							console.log('success',result);
-							store.loadData(result.data);
-						},
-						failure:function(response){
-							console.log('fail', response.status);
+			xtype:'panel',
+			title:"Sonmingyu ExtJS",
+			region:'north',
+			border:true,
+			padding:'0 0 10 0',
+			items:[{
+				xtype:'label',
+				text:'made by ExtJS',
+			}]
+		},{
+			xtype:'panel',
+			title:'Menu',
+			width:200,
+			region:'west',
+			split:true,
+			border:true,
+			collapses:true,
+			collapsible:true,
+			titleCollapse:true,
+			items:[{
+				xtype:'treepanel',
+				listeners:[{
+					itemclick:function( obj, record, item, index, e, eOpts){
+						let movePageName = '';
+						
+						switch(index){
+							case 1:
+								movePageName = 'introduce';
+								break;
+							case 3:
+								movePageName = 'inputfieldsample';
+								break;
+							case 4:
+								movePageName = 'gridsample';
+								break;
+							case 5:
+								movePageName = 'ajaxsample';
+								break;
 						}
-					});
+						
+						if(movePageName.length > 0){
+							var page = obj.up('viewport').down('component[region=center]');
+								page.removeAll(true);
+								page.add({
+									xtype: movePageName
+								});
+						}
+						
+					}
+				}],
+				root:{
+					text:'Portfolio',
+					expanded:true,
+					children:[{
+						text:"Introeduce",
+						leaf:true
+					},{
+						text:"ExtJs Sample",
+						expanded:true,
+						children:[{
+							text:'InputField',
+							leaf:true
+						},{
+							text:'Grid',
+							leaf:true,
+						},{
+							text:'Ajax',
+							leaf:true
+						}]
+					}]
 				}
-			},
-			store:{
-				field:['column1','column2','column3'],
-				data : []
-			}
+			}]
+		},{
+			xtype:'panel',
+			region:'center',
+			border:true,
+			scrollable:true,
+    		autoScroll:true,
+    		items:[{
+				xtype:'introduce'
+			}]
 		}]
 	})
 })
