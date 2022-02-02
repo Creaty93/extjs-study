@@ -11,7 +11,7 @@ Ext.define('study.view.Introduce', {
 	xtype:'image',
 	width: 150,
 	height: 150,
-	src:'/resources/myprofileimg.jpg',
+	src:'https://creaty93.github.io/extjs-study/resources/myprofileimg.jpg',
 	padding:'0 0 10 0'
 },{
 	xtype:'label',

@@ -15,7 +15,7 @@ Ext.define('study.view.main.AjaxSampleController', {
 	},
 	dataLoadClick:function(btn){
 		Ext.Ajax.request({
-			url:'/data/grid.json',
+			url:'https://creaty93.github.io/extjs-study/data/grid.json',
 			method:'POST',
 			success:function(response){
 				var result = Ext.decode(response.responseText);

@@ -11,7 +11,7 @@ Ext.define('study.view.main.GridSampleModel', {
 		fields:['column1','column2','column3'],
 		proxy:{
 			type:'ajax',
-			url:'/data/grid.json',
+			url:'https://creaty93.github.io/extjs-study/data/grid.json',
 			reader:{
 				type:'json',
 				rootProperty:'data'
