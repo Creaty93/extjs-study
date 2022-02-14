@@ -42,6 +42,9 @@ Ext.onReady(function(){
 							case 5:
 								movePageName = 'ajaxsample';
 								break;
+							case 6:
+								movePageName = 'windowsample';
+								break;
 						}
 						
 						if(movePageName.length > 0){
@@ -71,6 +74,9 @@ Ext.onReady(function(){
 							leaf:true,
 						},{
 							text:'Ajax',
+							leaf:true
+						},{
+							text:'Window',
 							leaf:true
 						}]
 					}]
